@@ -90,7 +90,7 @@
      * x -> x
      */
     function notNullOrUndefined (x) {
-        if (!x) {
+        if (x === null || x === undefined) {
             throw 'Expected a value, but got ' + x;
         }
 
