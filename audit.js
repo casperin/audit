@@ -62,11 +62,11 @@
      * String -> x -> x|Error
      */
     function is (typeSignature, x) {
-        function main (x_) {
-            var signature = typeSignature.toLowerCase().split(':'),
-                type = signature[0],
-                len = +signature[1];
+        var signature = typeSignature.toLowerCase().split(':'),
+            type = signature[0],
+            len = +signature[1];
 
+        function main (x_) {
             if (getType(x_) !== type) {
                 throw x_ + ' is not a ' + type + '. It\'s a ' + getType(x_);
             }
@@ -150,7 +150,7 @@
     }
 
     /**
-     * This takes an "signature" that describes the second parameter, the
+     * This takes a "signature" that describes the second parameter, the
      * object (usually a class-like object). If any of the properties in the
      * object fails the test, `signature` will throw an error.
      *
@@ -195,30 +195,30 @@
     root.audit = {
 
         // Not used for checking anything, but still quite useful.
-        getType: getType,
+        getType:                getType,
 
         // Main function
-        isType: is,
+        isType:                 is,
 
         // Map version of the above
-        mapType: mapType,
+        mapType:                mapType,
 
         // Convenience functions
-        isNumber: is('number'),
-        isString: is('string'),
-        isArray: is('array'),
-        isObject: is('object'),
-        isDate: is('date'),
-        isFunction: is('function'),
-        isRegExp: is('regexp'),
-        isBoolean: is('boolean'),
-        isNull: is('null'),
-        isUndefined: is('undefined'),
+        isNumber:               is('number'),
+        isString:               is('string'),
+        isArray:                is('array'),
+        isObject:               is('object'),
+        isDate:                 is('date'),
+        isFunction:             is('function'),
+        isRegExp:               is('regexp'),
+        isBoolean:              is('boolean'),
+        isNull:                 is('null'),
+        isUndefined:            is('undefined'),
 
         // Special case functions
-        notNullOrUndefined: notNullOrUndefined,
-        condition: condition,
-        signature: signature
+        notNullOrUndefined:     notNullOrUndefined,
+        condition:              condition,
+        signature:              signature
     };
 
 })(window);
