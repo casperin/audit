@@ -55,17 +55,17 @@
     }
 
     /**
-     * Takes a signature (such as `string`, `function`, or `orray:3` and
+     * Takes a type signature (such as "string", "function", or "orray:3" and
      * an element and throws an error if the element does not match the type
      * signature passed in; otherwise it just returns the element passed in.
      *
      * String -> x -> x|Error
      */
-    function is (signature, x) {
+    function is (typeSignature, x) {
         function main (x_) {
-            var sig = signature.toLowerCase().split(':'),
-                type = sig[0],
-                len = +sig[1];
+            var signature = typeSignature.toLowerCase().split(':'),
+                type = signature[0],
+                len = +signature[1];
 
             if (getType(x_) !== type) {
                 throw x_ + ' is not a ' + type + '. It\'s a ' + getType(x_);
@@ -150,9 +150,9 @@
     }
 
     /**
-     * This takes an "interface" that describes the second parameter, the
+     * This takes an "signature" that describes the second parameter, the
      * object (usually a class-like object). If any of the properties in the
-     * object fails the test, `interface` will throw an error.
+     * object fails the test, `signature` will throw an error.
      *
      * Example:
      *
@@ -162,22 +162,22 @@
      *              c: function (x, y) { return x + y; }
      *          },
      *
-     *          myInterface = {
+     *          mySignature = {
      *              a: 'number',
      *              b: 'string:3',
      *              c: 'function:3'
      *          };
      *
-     *      interface(myInterface, myObject);
+     *      signature(mySignature, myObject);
      *          Throws: function (x, y) { return x + y; } does not have the length 3. It's 2.
      *
      *
      * {String} -> (a) -> (a)|Error
      */
-    function interface (interface, object) {
+    function signature (signature, object) {
         function main (obj) {
-            Object.keys(interface).forEach(function (key) {
-                is(interface[key], obj[key]);
+            Object.keys(signature).forEach(function (key) {
+                is(signature[key], obj[key]);
             });
 
             return obj;
@@ -185,7 +185,7 @@
 
         if (arguments.length === 1) return main;
         if (arguments.length >= 2) return main(object);
-        return interface;
+        return signature;
     }
 
     /**
@@ -218,7 +218,7 @@
         // Special case functions
         notNullOrUndefined: notNullOrUndefined,
         condition: condition,
-        interface: interface
+        signature: signature
     };
 
 })(window);

@@ -51,13 +51,13 @@ var myObject = {
         c: function (x, y) { return x + y; }
     },
 
-    myInterface = {
+    mySignature = {
         a: 'number',
         b: 'string:3',
         c: 'function:3'
     };
 
-interface(myInterface, myObject);
+audit.signature(mySignature, myObject);
     // Throws: function (x, y) { return x + y; } does not have the length 3. It's 2.
 ```
 
