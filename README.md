@@ -17,16 +17,16 @@ javascript.
 Types are (casing is irrelevant):
 
 ```javascript
-`array`
-`object`
-`string`
-`date`
-`regexp`
-`function`
-`boolean`
-`number`
-`null`
-`undefined`
+'array'
+'object'
+'string'
+'date'
+'regexp'
+'function'
+'boolean'
+'number'
+'null'
+'undefined'
 ```
 
 
